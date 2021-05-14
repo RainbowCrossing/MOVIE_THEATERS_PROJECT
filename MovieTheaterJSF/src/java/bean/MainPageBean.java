@@ -1,5 +1,5 @@
 /*
- * TMW160530 Tyler Waller
+ * Tyler Waller
  * This program is meant to simulate the process of a movie ticket purchase
  * through a JSF page being able to pull information from the moviesDB that was
  * created for this project. It should be able to simulate the process of inputting
