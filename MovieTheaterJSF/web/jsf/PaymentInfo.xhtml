@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Purchase Information</title>
+        <style type="text/css">
+            div.main {
+                font-weight: bold;
+                text-align: center;
+                width: 80%;
+                border: 3px solid #fff280;
+                padding: 10px;
+                background-image: url(/MovieTheaterJSF/resources/images/banner.png);
+            }
+            table.panel{
+                text-align: left;
+                font-family: Times;
+                font-weight: bold;
+                background-color: #c5c5c0;
+                border: 3px solid #fff283;
+            }
+        </style>
+    </h:head>
+    <h:body style="background-image: url(/MovieTheaterJSF/resources/images/moviebg.jpg)">
+        <h:form>
+            <div class="main">
+            <h3 style="color: black; font-size: 52px">Payment Information</h3>
+            </div>
+            <h:panelGrid class="panel" columns="2">
+                <h:outputLabel value="Movie ticket for: "/>
+                <h:outputText value="#{purchaseBean.movies.title}"/>
+                <h:outputLabel value="Ticket amount: "/>
+                <h:inputText value="#{purchaseBean.tickets}"/>
+                <h:outputLabel value="$10/ticket. "/>
+                <br/>
+                <h:outputLabel value="Movie Times"/>
+                <h:selectOneRadio value="#{purchaseBean.movieTime}">
+                    <f:selectItem itemValue="#{purchaseBean.movies.time1}" itemLabel="#{purchaseBean.movies.time1}" />
+                    <f:selectItem itemValue="#{purchaseBean.movies.time2}" itemLabel="#{purchaseBean.movies.time2}" />
+                    <f:selectItem itemValue="#{purchaseBean.movies.time3}" itemLabel="#{purchaseBean.movies.time3}" />
+                    <f:selectItem itemValue="#{purchaseBean.movies.time4}" itemLabel="#{purchaseBean.movies.time4}" />
+                    <f:selectItem itemValue="#{purchaseBean.movies.time5}" itemLabel="#{purchaseBean.movies.time5}" />
+                </h:selectOneRadio>
+                <h:outputLabel value="Credit Card Number: "/>
+                <h:inputText id="creditCardNumber" value="#{purchaseBean.creditCardNumber}" required="true" label="Credit Card">
+                    <f:validateLength minimum="16" maximum="16" />
+                </h:inputText>
+                <h:outputLabel value="Name on Card: "/>
+                <h:inputText value="#{purchaseBean.cardName}"/>
+                <h:outputLabel value="Expiration Date(MM/yy): "/>
+                <h:inputText value="#{purchaseBean.expDate}">
+                    <f:convertDateTime pattern="MM/yy" />
+                </h:inputText>
+            </h:panelGrid>
+            <h:commandButton value="Purchase Ticket(s)" action="#{purchaseBean.confirm()}"/>
+            <br/>
+            <h:commandButton value="Back to Main Page" action="MainPage.xhtml"/>
+        </h:form>
+    </h:body>
+</html>
+
